@@ -5,8 +5,11 @@
 
   //Code here
 var me = {
-  name: 'ryan';
-}
+  name: 'ryan',
+  age: '24'
+};
+
+alert(me.name);
 
 
 
@@ -18,18 +21,29 @@ var me = {
 //Make a 'favoriteThings' object that contains the following keys: band, food, person, book, movie, holiday. Have the values to those keys be your favorite thing in that category.
 
   //Code here
+  var favoriteThings = {
+    band: 'The Black Keys',
+    food: 'Tortas',
+    person: 'My Wife',
+    book: 'Anything by Stephen King',
+    movie: 'Too Many',
+    holiday: 'Any holiday with fireworks'
+  }
 
 
 //After you've made your object, add another key named 'car' with the value being your favorite car and then another key named 'brand' with the value being your favorite brand.
 
   //Code here
 
+  favoriteThings.car = 'Impala';
+  favoriteThings.brand = 'chevy';
 
 //Now change the food key in your favoriteThings object to be 'Lettuce' and change the book key in your favoriteThings object to be '50 Shades of Gray'.
 
   //Code here
 
-
+favoriteThings.food = 'Lettuce';
+favoriteThings.book = '50 Shades of Gray';
 
 
 //NEXT PROBLEM
@@ -41,20 +55,26 @@ and set it equal to the string 'firstPocket'. Using bracket notation,
 add a 'firstPocket' key (or property) to backPack, using 'item'.
 Set the value of that key to 'chapstick'.
 
+
 Using dot notation, add another key (or property) to your backPack object
 that is named color, with the value being the color of your backpack. */
 
-  //Code here
+  var backPack = {};
+
+  var item = 'firstPocket';
+
+  backPack[item] = 'chapstick';
+
 
 //After you do the above, alert your entire backPack object.
 
-  //Code here
+  alert(backPack);
 
 /*You probably noticed that it just alerted [object Object].
 Alerting to see the data in your Object doesn't work so well.
 Instead, console.log your whole backPack object and then check out the console. */
 
-  //Code here
+console.log(backPack);
 
 
 
@@ -66,12 +86,22 @@ Instead, console.log your whole backPack object and then check out the console. 
 
 //Create an 'alsoMe' object with the following properties name, age, height, gender, married, eyeColor, hairColor. Fill those properties in with the appropriate values.
 
-  //Code Here
+  var alsoMe = {
+    name: 'Ryan',
+    age: 24,
+    height: '5ft 10in',
+    gender: 'Male',
+    married: 'yes',
+    eyeColor: 'Hazel',
+    hairColor: 'Dark Brown'
+  }
 
 //Now, loop through your object and alert every value. *Tyler --> 24 --> 6'0 --> Male, etc etc
 
   //Code Here
-
+for(var key in alsoMe){
+  alert(alsoMe[key]);
+};
 
 
 
@@ -82,13 +112,21 @@ Instead, console.log your whole backPack object and then check out the console. 
 
 //Create an Object called 'album' with 5 keys named different song titles that you make up, with the values being the length of each song.
 
-  //Code Here
+  var album = {
+    superFang: 3.33,
+    hyperStork: 4.44,
+    metaMethod: 5.55,
+    petaPather: 6.66,
+    junklyJaguar: 7.77,
+  }
 
 //Now, loop through your album object alerting every song title individually.
 
   //Code Here
 
-
+for(var key in album){
+  alert(album[key]);
+}
 
 
 //NEXT PROBLEM
@@ -100,10 +138,22 @@ Instead, console.log your whole backPack object and then check out the console. 
 
   //Code Here
 
+  var states = {
+    utah: 4000000,
+    california: 50000000,
+    oregon: 5000000,
+    idaho: 2000000,
+    arizona: 6000000
+  }
+
 //Now, loop through your states object and if the states population is greater than 30K, alert that state.
 
   //Code Here
-
+for(var key in states){
+  if (states[key] > 30000){
+    alert(states[key]);
+  }
+}
 
 
 
@@ -125,10 +175,18 @@ that each value is truthy. If it's not truthy, remove it from the object. */
 
   //Code Here
 
+  for(var key in user1){
+    if(!user1[key]){
+      delete user1[key];
+    }
+  }
+
 //Once you get your truthy Object, Change the remaining values in the object to be specific to you (name: 'your name', username: 'your username'), rather than my information.
 
   //Code Here
-
+user1.name = 'Ryan Colton';
+user1.pwHash = 'password';
+user1.username= 'metaMethod';
 
 
 
@@ -151,13 +209,14 @@ var user2 = {
 //Let's say I, the user, decided to change my name and email address to the following
 // name -> 'Tyler S. McGinnis', email -> 'tyler.mcginnis@devmounta.in'. Make that change.
 
-  //Code Here
+  user2.name = 'Tyler S. McGinnis';
+  user2.email= 'tyler.mcginnis@devmounta.in';
 
 //Now call the sayEmail method that's on the user object which will alert the users email
 
   //Code Here
 
-
+user2.sayEmail();
 
 
 //NEXT PROBLEM
@@ -169,16 +228,21 @@ var user2 = {
 
   //Code Here
 
+  var methodCollection = {};
+
 /*Now add two methods (functions that are properties on objects) to your methodCollection
 object. One called 'alertHello' which alerts 'hello' and another method called logHello
  which logs 'hello' to the console. */
 
   //Code Here
-
+methodCollection.alertHello = function(){alert('hello')};
+methodCollection.logHello = function(){console.log('hello')};
 //Now call your alertHello and logHello methods.
 
   //Code Here
 
+methodCollection.alertHello();
+methodCollection.logHello();
 
 
 //NEXT PROBLEM
@@ -189,7 +253,13 @@ object. One called 'alertHello' which alerts 'hello' and another method called l
 // parameters and returns a new object with all of the information that you passed in.
 
   //Code Here
-
+  function makePerson(name, birthday, ssn){
+    var person = {};
+    person['name'] = name;
+    person['birthday'] = birthday;
+    person['ssn'] = ssn;
+    return person;
+  }
 
 
 //NEXT PROBLEM
@@ -200,8 +270,14 @@ object. One called 'alertHello' which alerts 'hello' and another method called l
 
   //Code Here
 
+function makeCard(cardNumber, expirationDate, securityCode){
+  var newCard = {};
+  newCard['Number'] = cardNumber;
+  newCard['expiration'] = expirationDate;
+  newCard['code'] = securityCode;
 
-
+  return newCard;
+}
 //NEXT PROBLEM
 
 
@@ -212,3 +288,13 @@ object. One called 'alertHello' which alerts 'hello' and another method called l
 */
 
   //Code Here
+function bindCard(person, creditCard){
+  var personCardArr = [person, creditCard];
+  var personCard = {};
+  for(var i = 0; i > personCardArr.length; i++){
+    for(var key in personCardArr[i]){
+      personCardArr[i][key] = personCard[key]
+    }
+  }
+  return personCard;
+}
