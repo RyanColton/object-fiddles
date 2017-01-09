@@ -289,12 +289,8 @@ function makeCard(cardNumber, expirationDate, securityCode){
 
   //Code Here
 function bindCard(person, creditCard){
-  var personCardArr = [person, creditCard];
-  var personCard = {};
-  for(var i = 0; i > personCardArr.length; i++){
-    for(var key in personCardArr[i]){
-      personCardArr[i][key] = personCard[key]
-    }
-  }
-  return personCard;
+  for (var key in person) {
+       creditCard[key] = person[key];
+   }
+   return creditCard;
 }
